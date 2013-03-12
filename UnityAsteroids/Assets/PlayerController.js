@@ -9,6 +9,9 @@ function Start () {
 
 function Update () {
 
+	//enable borders using the borders function in BorderController
+	BorderController.EnableBorders(transform);
+
 	//rotation of the cube
 	transform.Rotate(Vector3.forward * -40 * Input.GetAxis("Horizontal") * Time.deltaTime);
 	
