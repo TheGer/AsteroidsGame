@@ -2,6 +2,10 @@
 var normalSpeed:int;
 var turboSpeed:int;
 
+//this is the slot for the laser prefab
+var laserprefab:Rigidbody;
+
+
 
 function Start () {
 
@@ -14,6 +18,13 @@ function Update () {
 
 	//rotation of the cube
 	transform.Rotate(Vector3.forward * -40 * Input.GetAxis("Horizontal") * Time.deltaTime);
+	
+	//fire is the left ctrl key
+	if(Input.GetKeyDown(KeyCode.LeftControl))
+	{
+		//create a laser at the position of the space ship.
+		Instantiate(laserprefab,transform.position,transform.rotation);
+	}
 	
 	//speed / turbo speed
 	if (Input.GetKey(KeyCode.Space))
