@@ -1,6 +1,12 @@
 #pragma strict
+
+static var score:int=0;
+static var health:int=100;
+
 var normalSpeed:int;
 var turboSpeed:int;
+//game is not over yet. 
+var gameover:boolean=false;
 
 //this is the slot for the laser prefab
 var laserprefab:Rigidbody;
@@ -11,6 +17,16 @@ var currentTime:float=0.0;
 var elapsedTime:int=0;
 
 
+function OnTriggerEnter(other:Collider)
+{
+	if (other.gameObject.tag=="asteroid")
+	{
+		//reduce 1% health
+		health--;
+		
+	}
+	
+}
 
 
 function Start () {
@@ -20,15 +36,21 @@ function Start () {
 
 function Update () {
 	currentTime = Time.time;
-	//il-hin li ghadda nahdmuh hekk:
+
 	
+	//il-hin li ghadda nahdmuh hekk:
 	//kill the game after sixty seconds
-	if (elapsedTime < 60)
+	
+	if(health <= 0)
+	{
+		gameover=true;
+	}
+	
+	if (elapsedTime < 10)
 	{
 		elapsedTime = currentTime - startTime;
 		//enable borders using the borders function in BorderController
 		BorderController.EnableBorders(transform);
-
 		//rotation of the cube
 		transform.Rotate(Vector3.forward * -40 * Input.GetAxis("Horizontal") * Time.deltaTime);
 	
@@ -51,7 +73,8 @@ function Update () {
 		}
 		
 	} else {
-	
+		//the game has finished
+		gameover=true;
 		//game over
 		print("game over");
 	}
@@ -60,5 +83,13 @@ function Update () {
 
 function OnGUI()
 {
+	GUI.color = Color.green;
 	GUI.Label(Rect(0,0,150,50),"Elapsed Time: "+elapsedTime);
+	GUI.Label(Rect(0,20,150,50),"Score: "+score);
+	GUI.Label(Rect(0,40,150,50),"Health: "+health);
+	
+	if(gameover==true)
+	{
+		GUI.Label(Rect(200,200,150,50),"GAME OVER");
+	}
 }
