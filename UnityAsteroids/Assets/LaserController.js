@@ -42,6 +42,17 @@ function OnTriggerEnter(other:Collider)
 		{
 		PlayerController.health++;
 		}
+		
+		var player:GameObject;
+		//get the player on screen
+		player = GameObject.FindGameObjectWithTag("spaceship");
+		
+		var playerScript:PlayerController;
+		
+		playerScript = player.GetComponent("PlayerController");
+		
+		//turns the player blue
+		player.renderer.sharedMaterial = playerScript.colours[2];		
 	}
 	
 

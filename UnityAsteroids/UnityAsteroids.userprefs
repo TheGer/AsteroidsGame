@@ -1,13 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenuController.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LaserController.js">
     <Files>
-      <File FileName="Assets\PlayerController.js" Line="1" Column="1" />
-      <File FileName="Assets\LaserController.js" Line="33" Column="37" />
-      <File FileName="Assets\PowerupController.js" Line="1" Column="1" />
-      <File FileName="Assets\BorderController.js" Line="1" Column="1" />
-      <File FileName="Assets\PowerupGenerator.js" Line="1" Column="1" />
-      <File FileName="Assets\MenuController.js" Line="24" Column="28" />
+      <File FileName="Assets\PlayerController.js" Line="39" Column="17" />
+      <File FileName="Assets\LaserController.js" Line="53" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

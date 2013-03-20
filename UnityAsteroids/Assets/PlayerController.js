@@ -3,6 +3,10 @@
 static var score:int=0;
 static var health:int=100;
 
+
+//this declares a materials array.
+var colours:Material[];
+
 var normalSpeed:int;
 var turboSpeed:int;
 //game is not over yet. 
@@ -23,15 +27,26 @@ function OnTriggerEnter(other:Collider)
 	{
 		//reduce 1% health
 		health--;
+		//turn the space ship red
+		renderer.sharedMaterial = colours[1];
 		
 	}
 	
+}
+
+function OnTriggerExit()
+{
+	//back to green
+	renderer.sharedMaterial = colours[0];
 }
 
 
 function Start () {
 	//the time the player started playing
 	startTime=Time.time;
+	//set the material to the first element in the colours array
+	renderer.sharedMaterial = colours[0];
+	//now the space ship is green
 }
 
 function Update () {
@@ -46,7 +61,7 @@ function Update () {
 		gameover=true;
 	}
 	
-	if (elapsedTime < 10)
+	if (elapsedTime < 30)
 	{
 		elapsedTime = currentTime - startTime;
 		//enable borders using the borders function in BorderController
@@ -76,7 +91,7 @@ function Update () {
 		//the game has finished
 		gameover=true;
 		//game over
-		print("game over");
+	//	print("game over");
 	}
 
 }
